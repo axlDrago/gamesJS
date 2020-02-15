@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Шифр Цезаря</title>
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</head>
+<body>
+
+	<!-- Блок навигации -->
+	<nav class="blue lighten-4">
+		<div class="nav-wrapper container">
+			<a href="#" class="brand-logo">Шифр Цезаря</a>
+		</div>
+	</nav>
+	<!-- /Блок навигации -->
+	<div class="container">
+		<h3>Шифр Цезаря для шифрования сообщения:</h3>
+		<ul>
+			<li>Кирилица и латиница участвует в шифровке и дешифровке</li>
+			<li>Для шифрования:
+				<ol>
+					<li>Ввести сообщение в первой строке</li>
+					<li>Указать ключ от -20 до 20</li>
+					<li>Нажать перекодировать</li>
+				</ol>
+			</li>
+			<li>Для расшифровки:
+				<ol>
+					<li>Ввести закодированно сообщение</li>
+					<li>Изменить знак ключа на противополженный</li>
+					<li>Или ввести свой ключ</li>
+					<li>Нажать перекодировать</li>
+				</ol>
+			</li>
+		</ul>
+		<hr>
+		<input type="text" id='input' placeholder="Введите текст для шифрования">
+		<input type="text" id='key' placeholder="Ключ для шифрования от -20 до 20">
+		<button class="btn waves-effect waves-light" id='btn'>Перекодировать</button>
+ 
+		<h2 id='out'></h2>
+	
+	</div>
+
+		<script>
+		var word = ['а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','a','b','c','d','e','f','g','h','i','k','l','m','n','o','p','q','r','s','t', 'u','v','w','x','y','z'];
+		
+		function Description () {
+			var input = document.getElementById('input');
+			var out = document.getElementById('out');
+			var btn = document.getElementById('btn');
+		}
+
+		Description.prototype.checkValue = function() {
+			input.onkeyup = function() {
+				description.checkNumber();
+			};
+			btn.onclick = function() {
+				description.checkNumber();
+			}
+		};
+
+		Description.prototype.checkNumber = function() {
+			if(key.value <= 20 && key.value >= -20 && input.value !='') {						
+				description.convert();
+			}
+			else if(key.value >= 20 || key.value <= -20){					
+				out.innerText = 'Ключ может быть только цифрой от "-20 до 20"!';
+				out.style.color = 'red';
+			}
+			else if(input.value =='') {
+				out.innerText = 'Текст не введен!';
+				out.style.color = 'red';
+			}
+		};
+
+		Description.prototype.convert = function (){
+			var key = document.getElementById('key').value;
+			var text = input.value.toLowerCase().split('');
+			for(i=0; i<text.length; i++) {
+				for (j=0; j<word.length; j++) {
+					var position = word.indexOf(text[i]);
+					var a2 = position + +key;
+					if(text[i] === word[j]) {
+						if(a2>=word.length){
+							var rest = +key - (word.length - position);
+							text[i] = word[rest];
+						}
+						else if(a2<0) {
+							var rest = Math.abs(key) - Math.abs(position);
+							text[i] = word[word.length - Math.abs(rest)];
+						}
+						else if(a2>=0 && a2<word.length) {
+							text[i] = word[j + +key];								
+						}
+						break;
+					}
+					if (text[i] == ' '){
+						text[i] = '%';
+						break;
+					}
+					if(text[i] == '%'){
+						text[i] = ' ';
+						break;
+					}
+				}
+			}
+			out.style.color = 'black';
+			out.innerHTML = text.reverse().join('');					
+		};
+
+		var description = new Description();
+		description.checkValue();
+
+	</script>
+</body>
+</html>

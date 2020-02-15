@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chess</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="package/jqueryUI/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container navbar__caption">
+            <h2 class="navbar__caption_text">Шахматы &alpha;lfa v.2</h2>
+        </div>
+    </nav>
+    <div class="container z-depth-5  text-center">
+        <div id="accordion">
+            <h3>Баги:</h3>
+            <div>
+                <p class="accordion">
+                    * если выбрана фигура и клик происходит за фигурой, фигуры накладываются друг на друга;
+                </p>
+            </div>
+            <h3>Функционал:</h3>
+            <div>
+                <p class="accordion">
+                    * Возможность начать новую игру;<br>
+                    * Звук ходов и перебора фигур;<br>
+                    * выделение происходит по цвету фигур(играя черными, при клике выделяются только черные);<br>
+                    * фигуры двигаются;<br>
+                    * фигуры бьют друг друга;<br>
+                    * выводится побитая фигура и время 'побития';<br>
+                    * выводятся ходы и время хода;<br>
+                    * выводится ход белых или черных;<br>
+                    * проверка первого хода;<br>
+                    * проверка хода белых или черных;<br>
+                    * проверка построения шахматных фигур(если брать данные с сервера);
+                </p>
+            </div>
+        </div>
+        <button type="button" class="btn" onclick="chess.newGame()">Новая игра</button>
+        <h2 id="whiteOrBlack"></h2>
+        <div class="main text-center" id="chessBoard"></div>
+        <div class="stepGame" id="broken">
+            <h3>Битые фигуры</h3>
+        </div>
+        <div class="stepGame" id="step">
+            <h3>Ходы</h3>
+        </div>
+    </div>
+    <script src="package/jquery/jquery.js"></script>
+    <script src="package/jqueryUI/jquery-ui.min.js"></script>
+    <script src="js/chess.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Game XO</title>
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+	<link rel="stylesheet" href="packages/jquery-ui-1.12.1/jquery-ui.min.css">
+	<link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+	<!-- Блок навигации -->
+	<nav class="purple lighten-4">
+		<div class="nav-wrapper container">
+			<a href="#" class="brand-logo">Game XO</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><button id="newGame" class="waves-effect waves-light btn">New Game</button></li>
+				<li>
+					<!--<label>-->
+						<!--<input class="sound" value="on" name="group1" type="radio"/>-->
+						<!--<span>Звук ON</span>-->
+					<!--</label>-->
+					<!--<label>-->
+						<!--<input class="sound" value="off" name="group1" type="radio" checked />-->
+						<!--<span>Звук OFF</span>-->
+					<!--</label>-->
+					<div id="sound" class="switch">
+						<label>
+							<span class="btn waves-effect waves-light">SOUND</span>
+							Off
+							<input type="checkbox">
+							<span class="lever"></span>
+							On
+						</label>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<!-- /Блок навигации -->
+	<div class="container main">
+		<div id="game"></div>
+		<table>
+			<thead>
+				<tr>
+					<td>#Игры</td>
+					<td>Player1 ("O")</td>
+					<td>Player2 ("X")</td>
+				</tr>
+				<tr>
+					<td>Игроки:</td>
+					<td>
+						<!--<div class="input-field col s1">-->
+							<!--<select id="player1Select">-->
+								<!--<option value="player" selected>Человек</option>-->
+							<!--</select>-->
+						<!--</div>-->
+						<div id="player1Select">
+							<label>
+								<input value="player" name="group1" type="radio" disabled checked/>
+								<span>Player</span>
+							</label>
+							<label>
+								<input value="AI" name="group1" type="radio" disabled/>
+								<span>AI Lvl1</span>
+							</label>
+						</div>
+					</td>
+					<td>
+						<!--<div class="input-field col s1">-->
+							<!--<select id="player2Select">-->
+								<!--<option value="AI" selected>ИИ ур.1</option>-->
+								<!--<option value="player">Человек</option>-->
+							<!--</select>-->
+						<!--</div>-->
+						<!--<div id="player2Select" class="switch">-->
+							<!--<label>-->
+								<!--<span class="btn waves-effect waves-light">ИИ ур.1</span>-->
+								<!--Выкл-->
+								<!--<input type="checkbox" checked>-->
+								<!--<span class="lever"></span>-->
+								<!--Вкл-->
+							<!--</label>-->
+						<!--</div>-->
+						<div id="player2Select">
+							<label>
+								<input value="player" name="group2" type="radio"/>
+								<span>Player</span>
+							</label>
+							<label>
+								<input value="AI" name="group2" type="radio"  checked/>
+								<span>AI Lvl1</span>
+							</label>
+							<label>
+								<input value="AI2" name="group2" type="radio" />
+								<span>AI Lvl2</span>
+							</label>
+						</div>
+					</td>
+				</tr>
+			</thead>
+			<tbody id='score'></tbody>
+			<tfoot>
+				<tr>
+					<td>Сумма Побед:</td>
+					<td id=summ1></td>
+					<td id='summ2'></td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<script src="packages/jquery/jquery-3.3.1.js"></script>
+	<script src="packages/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+	<script src="js/main.min.js"></script>
+</body>
+</html>
